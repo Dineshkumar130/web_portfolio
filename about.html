@@ -47,25 +47,38 @@
   <!-- About Page Content -->
   <main class="mx-auto w-full max-w-6xl px-4 pb-24 pt-32 sm:px-6 lg:px-8">
     <!-- Intro Section -->
-    <section class="text-center">
-      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Who I Am</p>
-      <h1 data-reveal class="mt-3 translate-y-6 font-display text-[clamp(2.4rem,7vw,5rem)] font-bold leading-[1.04] opacity-0 transition duration-700">The story behind the code</h1>
-      <p data-reveal class="mx-auto mt-4 max-w-2xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">I am a fresher developer focused on practical problem solving, thoughtful UI, and consistent growth through real projects.</p>
+    <section class="relative overflow-hidden rounded-3xl px-4 py-12 text-center sm:px-8">
+      <!-- Decorative Background Layers -->
+      <div class="pointer-events-none absolute inset-0 opacity-35">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(232,255,77,0.15),transparent_35%),radial-gradient(circle_at_75%_40%,rgba(59,242,197,0.12),transparent_30%),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_100%,100%_100%,80px_80px,80px_80px]"></div>
+        <div class="absolute -left-28 top-0 h-[320px] w-[220px] rotate-12 bg-[#e8ff4d]/10 blur-3xl"></div>
+      </div>
+      <div class="relative">
+        <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Who I Am</p>
+        <h1 data-reveal class="mt-3 translate-y-6 font-display text-[clamp(2.4rem,7vw,5rem)] font-bold leading-[1.04] opacity-0 transition duration-700">
+          The story <span class="bg-gradient-to-r from-[#3f5dff] via-[#00b686] to-[#e8ff4d] bg-clip-text text-transparent">behind the</span> code
+        </h1>
+        <p data-reveal class="mx-auto mt-4 max-w-2xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">I am a fresher developer focused on practical problem solving, thoughtful UI, and consistent growth through real projects.</p>
+      </div>
     </section>
 
     <!-- Story Section -->
     <section class="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
       <!-- Story Visual Card -->
       <div data-reveal class="translate-y-6 opacity-0 transition duration-700">
-        <div class="rounded-3xl border border-[#d3dced] bg-gradient-to-br from-[#3f5dff]/20 to-[#00b686]/25 p-10 dark:border-[#222222]">
-          <p class="font-display text-6xl font-bold">DEV</p>
-          <p class="mt-4 text-sm text-[#59627a] dark:text-slate-300">Computer Science Graduate Ã¢â‚¬Â¢ 2024</p>
+        <div class="p-4">
+          <div class="group mx-auto w-fit">
+            <div class="h-72 w-72 overflow-hidden rounded-full border-4 border-white shadow-[0_20px_45px_-20px_rgba(15,23,42,0.6)] transition-colors duration-300 group-hover:border-[#3f5dff] dark:border-[#222222] dark:shadow-[0_20px_45px_-20px_rgba(232,255,77,0.35)] dark:group-hover:border-[#e8ff4d] sm:h-80 sm:w-80">
+              <img src="images/Profile_img2.png" alt="Dinesh profile photo" class="h-full w-full transform-gpu rounded-full object-cover object-center transition duration-700 ease-out will-change-transform group-hover:scale-110" loading="lazy" />
+            </div>
+          </div>
+          <p class="mt-6 text-center text-sm text-[#59627a] dark:text-slate-300">Computer Science Graduate - 2024</p>
         </div>
       </div>
 
       <!-- Story Copy Content -->
       <div>
-        <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">My Story</p>
+        <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] opacity-0 transition duration-700 dark:text-[#e8ff4d]"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>My Story</p>
         <h2 data-reveal class="mt-2 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700 sm:text-5xl">From curiosity to craft</h2>
         <p data-reveal class="mt-5 translate-y-6 leading-relaxed text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">My journey started with curiosity about how websites work and grew into hands-on building with HTML, CSS, JavaScript, React, and backend basics.</p>
         <p data-reveal class="mt-4 translate-y-6 leading-relaxed text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">Now I am looking for internships and entry-level opportunities where I can contribute to real products, collaborate with teams, and keep improving fast.</p>
@@ -78,7 +91,7 @@
 
     <!-- Values Section -->
     <section class="mt-20">
-      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">What I Value</p>
+      <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] opacity-0 transition duration-700 dark:text-[#e8ff4d]"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>What I have</p>
       <h2 data-reveal class="mt-2 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700 sm:text-5xl">How I work</h2>
 
       <!-- Values Card Grid -->
@@ -104,7 +117,7 @@
     <!-- Call-To-Action Section -->
     <section class="mt-20 rounded-3xl border border-[#d3dced] bg-white p-8 text-center dark:border-[#222222] dark:bg-[#111111] sm:p-10">
       <h2 data-reveal class="translate-y-6 font-display text-3xl font-bold opacity-0 transition duration-700 sm:text-4xl">Ready to collaborate?</h2>
-      <p data-reveal class="mx-auto mt-4 max-w-xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">If you have a product idea or role opportunity, IÃ¢â‚¬â„¢d love to discuss how I can contribute.</p>
+      <p data-reveal class="mx-auto mt-4 max-w-xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">If you have a product idea or role opportunity, I'd love to discuss how I can contribute.</p>
       <!-- CTA Button Group -->
       <div data-reveal class="mt-7 flex translate-y-6 flex-wrap justify-center gap-4 opacity-0 transition duration-700">
         <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#151b2d] dark:hover:bg-[#d7ef3a]">Start a Conversation</a>
@@ -119,10 +132,3 @@
   <script src="js/main.js?v=20260428a"></script>
 </body>
 </html>
-
-
-
-
-
-
-

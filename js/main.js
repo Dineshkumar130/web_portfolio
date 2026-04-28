@@ -40,7 +40,9 @@ const renderThemeToggle = () => {
   if (!themeToggle || !icon || !text) return;
 
   const isDark = document.documentElement.classList.contains('dark');
-  icon.textContent = isDark ? 'SUN' : 'MON';
+  icon.innerHTML = isDark
+    ? '<i class="bi bi-brightness-high-fill"></i>'
+    : '<i class="bi bi-moon-stars-fill"></i>';
   text.textContent = isDark ? 'Light' : 'Dark';
   themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
   themeToggle.setAttribute('aria-pressed', String(isDark));
@@ -148,7 +150,7 @@ const initializeThemeToggle = () => {
     fallback.id = 'theme-toggle';
     fallback.type = 'button';
     fallback.className = 'fixed bottom-4 right-4 z-[60] inline-flex items-center gap-2 rounded-full border border-[#d3dced] bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#59627a] shadow-lg transition hover:border-[#3f5dff] hover:text-[#151b2d] dark:border-[#222222] dark:bg-[#111111] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#f0f0f0]';
-    fallback.innerHTML = '<span id="theme-toggle-icon" aria-hidden="true" class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#edf2fb] text-[10px] text-[#3f5dff] dark:bg-[#1a1a1a] dark:text-[#e8ff4d]">MON</span><span id="theme-toggle-text">Dark</span>';
+    fallback.innerHTML = '<span id="theme-toggle-icon" aria-hidden="true" class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#edf2fb] text-xs leading-none text-[#3f5dff] dark:bg-[#1a1a1a] dark:text-[#e8ff4d]"><i class="bi bi-moon-stars-fill"></i></span><span id="theme-toggle-text">Dark</span>';
     document.body.appendChild(fallback);
 
     themeToggle = document.getElementById('theme-toggle');
