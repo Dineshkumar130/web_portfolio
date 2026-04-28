@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI/UX Design | Dinesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const stored = localStorage.getItem('site-theme');
+        const savedTheme = stored === 'light' || stored === 'dark' ? stored : null;
+        const resolvedTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.classList.toggle('dark', resolvedTheme === 'dark');
+        root.setAttribute('data-theme', resolvedTheme);
+        root.style.colorScheme = resolvedTheme;
+      } catch (error) {
+        root.classList.remove('dark');
+        root.setAttribute('data-theme', 'light');
+        root.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#f4f7fc] font-body text-[#151b2d] antialiased dark:bg-[#0a0a0a] dark:text-[#f0f0f0]">
+  <!-- Shared Header Mount -->
+  <div id="site-header"></div>
+
+  <!-- UI/UX Service Page Content -->
+  <main class="mx-auto w-full max-w-6xl px-4 pb-24 pt-32 sm:px-6 lg:px-8">
+    <!-- Back Navigation -->
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm text-[#59627a] transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Back to Home</a>
+
+    <!-- Service Hero Section -->
+    <section class="mt-8 rounded-3xl border border-[#3f5dff]/35 dark:border-[#e8ff4d]/35 bg-white p-8 dark:bg-[#111111] md:p-10">
+      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Service</p>
+      <h1 data-reveal class="mt-3 translate-y-6 font-display text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight opacity-0 transition duration-700">UI/UX Design</h1>
+      <p data-reveal class="mt-4 max-w-3xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">I design intuitive interfaces that combine visual clarity, usability, and conversion-focused flows for web products.</p>
+      <!-- Hero CTA Buttons -->
+      <div data-reveal class="mt-8 flex translate-y-6 flex-wrap gap-3 opacity-0 transition duration-700">
+        <a href="contact.html" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] dark:bg-[#e8ff4d] px-6 py-3 text-sm font-semibold text-white dark:text-[#151b2d] transition hover:-translate-y-0.5 hover:bg-[#2f4ef8] dark:hover:bg-[#d7ef3a]">Start a Project</a>
+        <a href="#pricing" class="inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#3f5dff] dark:hover:border-[#e8ff4d] hover:text-slate-900 dark:border-[#222222] dark:text-slate-200 dark:hover:text-white">See Packages</a>
+      </div>
+
+      <!-- Core Design Service Cards -->
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-[#edf2fb] p-5 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#1a1a1a]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">RESEARCH</p><h2 class="mt-2 text-base font-semibold">User Insights</h2><p class="mt-1 text-sm text-[#59627a] dark:text-slate-300">Interviews and behavior analysis to ground decisions in reality.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-[#edf2fb] p-5 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#1a1a1a]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">WIREFRAME</p><h2 class="mt-2 text-base font-semibold">Flow & Structure</h2><p class="mt-1 text-sm text-[#59627a] dark:text-slate-300">Low-fidelity iterations to validate hierarchy and navigation.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-[#edf2fb] p-5 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#1a1a1a]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">PROTOTYPE</p><h2 class="mt-2 text-base font-semibold">Interactive Design</h2><p class="mt-1 text-sm text-[#59627a] dark:text-slate-300">Clickable prototypes that simulate core user journeys.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-[#edf2fb] p-5 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#1a1a1a]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">HANDOFF</p><h2 class="mt-2 text-base font-semibold">Developer Ready</h2><p class="mt-1 text-sm text-[#59627a] dark:text-slate-300">Specs and assets organized for smooth implementation.</p></article>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="mt-16" id="process">
+      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Process</p>
+      <h2 data-reveal class="mt-2 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700">How I design</h2>
+      <!-- Design Process Steps -->
+      <div class="mt-7 grid gap-4 md:grid-cols-2">
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Phase 1</p><h3 class="mt-2 text-lg font-semibold">Empathize & Define</h3><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Clarify user needs and business objectives.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Phase 2</p><h3 class="mt-2 text-lg font-semibold">Structure & Wireframe</h3><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Build information architecture and screen flow.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Phase 3</p><h3 class="mt-2 text-lg font-semibold">Visual Design</h3><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Craft high-fidelity UI and interaction states.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Phase 4</p><h3 class="mt-2 text-lg font-semibold">Test & Iterate</h3><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Refine with feedback and usability improvements.</p></article>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="mt-16">
+      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Investment</p>
+      <h2 data-reveal class="mt-2 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700">Design Packages</h2>
+      <!-- Pricing Package Cards -->
+      <div class="mt-7 grid gap-5 lg:grid-cols-3">
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-7 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs uppercase tracking-[0.1em] text-[#59627a]">Essential</p><p class="mt-2 font-display text-4xl font-bold">$2,000</p><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Fast visual direction and key screens.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#3f5dff] dark:border-[#e8ff4d] bg-white p-7 opacity-0 transition duration-700 dark:bg-[#111111]"><p class="inline-flex rounded-full bg-[#3f5dff] dark:bg-[#e8ff4d] px-3 py-1 text-xs font-bold text-white dark:text-[#151b2d]">Most Popular</p><p class="mt-3 text-xs uppercase tracking-[0.1em] text-[#59627a]">Full UX</p><p class="mt-2 font-display text-4xl font-bold">$6,500</p><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Research-backed UX and complete product flow.</p></article>
+        <article data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-7 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]"><p class="text-xs uppercase tracking-[0.1em] text-[#59627a]">Design System</p><p class="mt-2 font-display text-4xl font-bold">Custom</p><p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Token-based component systems for scale.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer Mount -->
+  <div id="site-footer"></div>
+  <!-- Main Script -->
+  <script src="js/main.js?v=20260428a"></script>
+</body>
+</html>
+
+
+
+
+
+
+

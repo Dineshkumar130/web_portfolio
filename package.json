@@ -1,0 +1,11 @@
+{
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "description": "A modern web portfolio using Tailwind CSS CDN",
+  "scripts": {
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": ["portfolio", "tailwind", "web-development"],
+  "author": "Dinesh",
+  "license": "ISC"
+}

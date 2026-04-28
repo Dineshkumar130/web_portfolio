@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Dinesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const stored = localStorage.getItem('site-theme');
+        const savedTheme = stored === 'light' || stored === 'dark' ? stored : null;
+        const resolvedTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.classList.toggle('dark', resolvedTheme === 'dark');
+        root.setAttribute('data-theme', resolvedTheme);
+        root.style.colorScheme = resolvedTheme;
+      } catch (error) {
+        root.classList.remove('dark');
+        root.setAttribute('data-theme', 'light');
+        root.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#f4f7fc] font-body text-[#151b2d] antialiased dark:bg-[#0a0a0a] dark:text-[#f0f0f0]">
+  <!-- Shared Header Mount -->
+  <div id="site-header"></div>
+
+  <!-- Contact Page Content -->
+  <main class="mx-auto w-full max-w-6xl px-4 pb-24 pt-32 sm:px-6 lg:px-8">
+    <!-- Intro Section -->
+    <section class="text-center">
+      <p data-reveal class="translate-y-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700">Get in Touch</p>
+      <h1 data-reveal class="mt-3 translate-y-6 font-display text-[clamp(2.3rem,6vw,4.6rem)] font-bold leading-[1.05] opacity-0 transition duration-700">Let's start a conversation</h1>
+      <p data-reveal class="mx-auto mt-4 max-w-2xl translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">Open to internships, entry-level roles, and collaboration opportunities.</p>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="mt-12 grid gap-6 md:grid-cols-3">
+      <!-- Email Card -->
+      <article data-reveal class="group translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 text-center opacity-0 transition duration-700 hover:-translate-y-1 hover:border-[#3f5dff]/50 dark:border-[#222222] dark:bg-[#111111] dark:hover:border-[#e8ff4d]/60">
+        <p class="text-3xl transition group-hover:text-[#3f5dff] dark:group-hover:text-[#e8ff4d]"><i class="bi bi-envelope-at-fill" aria-hidden="true"></i></p>
+        <h2 class="mt-3 text-lg font-semibold">Email</h2>
+        <p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">dineshmuppidi13@gmail.com</p>
+        <a href="mailto:dineshmuppidi13@gmail.com" class="mt-4 inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">
+          Send Email
+          <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </article>
+      <!-- Phone Card -->
+      <article data-reveal class="group translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 text-center opacity-0 transition duration-700 hover:-translate-y-1 hover:border-[#3f5dff]/50 dark:border-[#222222] dark:bg-[#111111] dark:hover:border-[#e8ff4d]/60">
+        <p class="text-3xl font-semibold transition group-hover:text-[#3f5dff] dark:group-hover:text-[#e8ff4d]"><i class="bi bi-telephone-fill" aria-hidden="true"></i></p>
+        <h2 class="mt-3 text-lg font-semibold">Phone</h2>
+        <p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">+91 95503 27957</p>
+        <a href="tel:+919550327957" class="mt-4 inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">
+          Call Now
+          <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </article>
+      <!-- Location Card -->
+      <article data-reveal class="group translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 text-center opacity-0 transition duration-700 hover:-translate-y-1 hover:border-[#3f5dff]/50 dark:border-[#222222] dark:bg-[#111111] dark:hover:border-[#e8ff4d]/60">
+        <p class="text-3xl font-semibold transition group-hover:text-[#3f5dff] dark:group-hover:text-[#e8ff4d]"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></p>
+        <h2 class="mt-3 text-lg font-semibold">Location</h2>
+        <p class="mt-2 text-sm text-[#59627a] dark:text-slate-300">Hyderabad, India</p>
+        <a href="https://maps.google.com/?q=Hyderabad+India" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">
+          View Map
+          <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </article>
+    </section>
+
+    <!-- Contact Details And Form Section -->
+    <section class="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <!-- Availability Details Panel -->
+      <div data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 hover:-translate-y-1 hover:border-[#3f5dff]/40 dark:border-[#222222] dark:bg-[#111111] dark:hover:border-[#e8ff4d]/50">
+        <h2 class="font-display text-3xl font-bold">Send a Message</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Share your project context, goals, and timeline. I usually reply within 24 hours.</p>
+
+        <div class="mt-6 space-y-3 text-sm">
+          <div class="flex items-start gap-3 rounded-xl border border-[#d3dced] px-4 py-3 dark:border-[#2a2a2a]">
+            <i class="bi bi-check2-circle mt-0.5 text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+            <p><span class="font-semibold">Availability:</span> Open to internships and entry-level roles</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-[#d3dced] px-4 py-3 dark:border-[#2a2a2a]">
+            <i class="bi bi-briefcase-fill mt-0.5 text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+            <p><span class="font-semibold">Preferred roles:</span> Frontend, Full-stack trainee, Junior web developer</p>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-[#d3dced] px-4 py-3 dark:border-[#2a2a2a]">
+            <i class="bi bi-clock-fill mt-0.5 text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+            <p><span class="font-semibold">Timezone:</span> IST (UTC+5:30)</p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="mailto:dineshmuppidi13@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#151b2d] dark:hover:bg-[#d7ef3a]">
+            <i class="bi bi-envelope-paper-fill" aria-hidden="true"></i>
+            Start Email
+          </a>
+          <a href="tel:+919550327957" class="inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">
+            <i class="bi bi-telephone-outbound-fill" aria-hidden="true"></i>
+            Call Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Message Form Panel -->
+      <div data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]">
+        <form id="contact-form" novalidate class="space-y-4">
+          <!-- Form Success State -->
+          <div id="form-success" class="hidden rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-600 dark:text-emerald-400">Message sent successfully. I will get back to you soon.</div>
+
+          <!-- Name And Email Inputs -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="f-name" class="mb-1 block text-sm font-medium">Full Name</label>
+              <input id="f-name" type="text" placeholder="Jane Smith" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+              <span id="e-name" class="mt-1 hidden text-xs text-rose-500"></span>
+            </div>
+            <div>
+              <label for="f-email" class="mb-1 block text-sm font-medium">Email Address</label>
+              <input id="f-email" type="email" placeholder="jane@company.com" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+              <span id="e-email" class="mt-1 hidden text-xs text-rose-500"></span>
+            </div>
+          </div>
+
+          <!-- Company And Budget Inputs -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="f-company" class="mb-1 block text-sm font-medium">Company (Optional)</label>
+              <input id="f-company" type="text" placeholder="Acme Corp" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+            </div>
+            <div>
+              <label for="f-budget" class="mb-1 block text-sm font-medium">Budget Range</label>
+              <select id="f-budget" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm outline-none transition focus:border-[#3f5dff] dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]">
+                <option value="">Select range...</option>
+                <option>Under $5,000</option>
+                <option>$5,000 - $15,000</option>
+                <option>$15,000 - $50,000</option>
+                <option>$50,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Quick Topic Buttons -->
+          <div>
+            <p class="mb-2 text-sm font-medium">Quick Topic</p>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" data-topic-chip="Internship opportunity" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Internship</button>
+              <button type="button" data-topic-chip="Freelance project inquiry" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Freelance Project</button>
+              <button type="button" data-topic-chip="Need a portfolio website" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Portfolio Website</button>
+            </div>
+          </div>
+
+          <!-- Subject Input -->
+          <div>
+            <label for="f-subject" class="mb-1 block text-sm font-medium">Subject</label>
+            <input id="f-subject" type="text" placeholder="Project inquiry" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+            <span id="e-subject" class="mt-1 hidden text-xs text-rose-500"></span>
+          </div>
+
+          <!-- Project Details Input -->
+          <div>
+            <div class="mb-1 flex items-center justify-between">
+              <label for="f-message" class="block text-sm font-medium">Project Details</label>
+              <p id="f-message-count" class="text-xs text-[#59627a] dark:text-slate-400">0/500</p>
+            </div>
+            <textarea id="f-message" maxlength="500" rows="5" placeholder="Tell me about your project, timeline, and goals" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]"></textarea>
+            <span id="e-message" class="mt-1 hidden text-xs text-rose-500"></span>
+          </div>
+
+          <!-- Form Submit Button -->
+          <button type="submit" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#151b2d] dark:hover:bg-[#d7ef3a]">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer Mount -->
+  <div id="site-footer"></div>
+  <!-- Main Script -->
+  <script src="js/main.js?v=20260428a"></script>
+</body>
+</html>
+
+
+
+
+
+
+

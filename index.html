@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinesh | Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const stored = localStorage.getItem('site-theme');
+        const savedTheme = stored === 'light' || stored === 'dark' ? stored : null;
+        const resolvedTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.classList.toggle('dark', resolvedTheme === 'dark');
+        root.setAttribute('data-theme', resolvedTheme);
+        root.style.colorScheme = resolvedTheme;
+      } catch (error) {
+        root.classList.remove('dark');
+        root.setAttribute('data-theme', 'light');
+        root.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <!-- Page-Specific Animation Styles -->
+  <style>
+    @keyframes hero-card-float-1 {
+      0%, 100% {
+        translate: 0 0;
+        scale: 1;
+        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
+      }
+      25% {
+        translate: 8px -14px;
+        scale: 1.01;
+        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.45);
+      }
+      50% {
+        translate: -6px 10px;
+        scale: 1.02;
+        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.5);
+      }
+      75% {
+        translate: 10px -8px;
+        scale: 1.01;
+        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
+      }
+    }
+
+    @keyframes hero-card-float-2 {
+      0%, 100% {
+        translate: 0 0;
+        scale: 1;
+        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
+      }
+      25% {
+        translate: -12px -10px;
+        scale: 1.015;
+        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.4);
+      }
+      50% {
+        translate: 8px 12px;
+        scale: 1.01;
+        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.5);
+      }
+      75% {
+        translate: -10px -6px;
+        scale: 1.02;
+        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
+      }
+    }
+
+    @keyframes hero-card-float-3 {
+      0%, 100% {
+        translate: 0 0;
+        scale: 1;
+        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
+      }
+      25% {
+        translate: 10px -9px;
+        scale: 1.01;
+        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.42);
+      }
+      50% {
+        translate: -10px 9px;
+        scale: 1.02;
+        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.48);
+      }
+      75% {
+        translate: 12px -12px;
+        scale: 1.01;
+        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
+      }
+    }
+
+    @keyframes hero-card-float-4 {
+      0%, 100% {
+        translate: 0 0;
+        scale: 1;
+        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
+      }
+      25% {
+        translate: -8px -11px;
+        scale: 1.01;
+        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.4);
+      }
+      50% {
+        translate: 9px 8px;
+        scale: 1.02;
+        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.48);
+      }
+      75% {
+        translate: -12px -10px;
+        scale: 1.01;
+        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
+      }
+    }
+
+    @keyframes badge-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(53, 240, 189, 0.55);
+      }
+      70% {
+        box-shadow: 0 0 0 11px rgba(53, 240, 189, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(53, 240, 189, 0);
+      }
+    }
+
+    @keyframes available-glow {
+      0%, 100% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 0 rgba(53, 240, 189, 0));
+      }
+      50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(53, 240, 189, 0.65));
+      }
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(-50%, 26px);
+        opacity: 0.35;
+      }
+    }
+
+    .hero-card-animate {
+      animation: hero-card-float-1 3.5s ease-in-out infinite;
+    }
+
+    .hero-card-path-2 {
+      animation-name: hero-card-float-2;
+      animation-duration: 3.9s;
+    }
+
+    .hero-card-path-3 {
+      animation-name: hero-card-float-3;
+      animation-duration: 4.2s;
+    }
+
+    .hero-card-path-4 {
+      animation-name: hero-card-float-4;
+      animation-duration: 4.5s;
+    }
+
+    .hero-card-delay-1 {
+      animation-delay: 0.7s;
+    }
+
+    .hero-card-delay-2 {
+      animation-delay: 1.4s;
+    }
+
+    .hero-card-delay-3 {
+      animation-delay: 2.1s;
+    }
+
+    .available-dot-pulse {
+      animation: badge-pulse 2.1s ease-out infinite;
+    }
+
+    .available-text-glow {
+      animation: available-glow 2.2s ease-in-out infinite;
+    }
+
+    .animate-scroll-down {
+      animation: scroll-bounce 1.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#f4f7fc] font-body text-[#151b2d] antialiased dark:bg-[#0a0a0a] dark:text-[#f0f0f0]">
+  <!-- Shared Header Mount -->
+  <div id="site-header"></div>
+
+  <!-- Home Section -->
+  <section id="home" class="relative overflow-hidden bg-[#f4f7fc] px-4 pb-16 pt-28 dark:bg-[#06090f] sm:px-6 lg:px-8">
+    <!-- Decorative Background Layers -->
+    <div class="pointer-events-none absolute inset-0 opacity-35">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(232,255,77,0.15),transparent_35%),radial-gradient(circle_at_75%_40%,rgba(59,242,197,0.12),transparent_30%),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_100%,100%_100%,80px_80px,80px_80px]"></div>
+      <div class="absolute -left-28 top-0 h-[520px] w-[220px] rotate-12 bg-[#e8ff4d]/10 blur-3xl"></div>
+    </div>
+
+    <!-- Home Two-Column Layout -->
+    <div class="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <!-- Home Intro Copy -->
+      <div>
+        <p data-reveal class="available-text-glow inline-flex translate-y-6 items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#00b686] opacity-0 transition duration-700 dark:text-[#35f0bd]">
+          <span class="available-dot-pulse h-2.5 w-2.5 rounded-full bg-[#00b686] dark:bg-[#35f0bd]"></span>
+          Available for Work
+        </p>
+        <h1 data-reveal class="mt-5 translate-y-6 font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-[-0.03em] text-[#151b2d] opacity-0 transition duration-700 dark:text-[#f1f5f9]">
+          Crafting
+          <span class="block text-[#3f5dff] dark:text-[#e8ff4d]">Digital</span>
+          <span class="block text-transparent [-webkit-text-stroke:1px_rgba(71,85,105,0.45)] dark:[-webkit-text-stroke:1px_rgba(148,163,184,0.45)]">Experiences</span>
+        </h1>
+        <p data-reveal class="mt-6 max-w-xl translate-y-6 text-base leading-relaxed text-[#59627a] opacity-0 transition duration-700 dark:text-slate-400 sm:text-lg lg:text-xl">
+          Fresher front-end developer focused on building responsive, accessible, and clean web experiences.
+        </p>
+
+        <!-- Primary Hero CTAs -->
+        <div data-reveal class="mt-9 flex translate-y-6 flex-wrap gap-4 opacity-0 transition duration-700">
+          <a href="#projects" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-8 py-3.5 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#0f172a] dark:hover:bg-[#d9f14d]">View My Work -></a>
+          <a href="contact.html" class="inline-flex items-center gap-2 rounded-full border border-[#d3dced] bg-white/70 px-8 py-3.5 text-base font-semibold text-[#151b2d] transition hover:border-[#e8ff4d]/70 hover:text-[#3f5dff] dark:border-white/15 dark:bg-white/[0.02] dark:text-slate-100 dark:hover:text-[#e8ff4d]">Let's Talk</a>
+        </div>
+
+        <!-- Animated Stats Row -->
+        <div data-reveal class="mt-11 grid max-w-2xl translate-y-6 grid-cols-3 gap-5 opacity-0 transition duration-700">
+          <div>
+            <p data-count="0" data-suffix="+" class="font-display text-4xl font-bold leading-none text-[#3f5dff] dark:text-[#e8ff4d] sm:text-5xl">0+</p>
+            <p class="mt-2 text-sm text-[#59627a] dark:text-slate-400">Fresher</p>
+          </div>
+          <div>
+            <p data-count="12" data-suffix="+" class="font-display text-4xl font-bold leading-none text-[#3f5dff] dark:text-[#e8ff4d] sm:text-5xl">0+</p>
+            <p class="mt-2 text-sm text-[#59627a] dark:text-slate-400">Projects Built</p>
+          </div>
+          <div>
+            <p data-count="3" data-suffix="+" class="font-display text-4xl font-bold leading-none text-[#3f5dff] dark:text-[#e8ff4d] sm:text-5xl">0+</p>
+            <p class="mt-2 text-sm text-[#59627a] dark:text-slate-400">Internships / Training</p>
+          </div>
+        </div>
+
+        <!-- Mobile Hero Feature Cards -->
+        <div data-reveal class="mt-10 grid translate-y-6 grid-cols-2 gap-4 sm:hidden opacity-0 transition duration-700">
+          <div class="hero-card-animate flex min-h-[132px] flex-col justify-center rounded-2xl border border-[#bed3ff] bg-gradient-to-br from-[#eef4ff] via-[#f8fbff] to-[#e3f2ff] p-4 backdrop-blur-sm dark:border-[#2f3958] dark:from-[#0e1628] dark:via-[#111a2f] dark:to-[#1a2642]">
+            <p class="text-3xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-layers" aria-hidden="true"></i></p>
+            <p class="mt-2 text-lg font-semibold text-[#334155] dark:text-slate-200">Building</p>
+          </div>
+          <div class="hero-card-animate hero-card-path-3 hero-card-delay-2 flex min-h-[132px] flex-col justify-center rounded-2xl border border-[#f4dcae] bg-gradient-to-br from-[#fff7e8] via-[#fffdf5] to-[#ffeecf] p-4 backdrop-blur-sm dark:border-[#4f4328] dark:from-[#231a0e] dark:via-[#2b2114] dark:to-[#3d301b]">
+            <p class="text-3xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-palette2" aria-hidden="true"></i></p>
+            <p class="mt-2 text-lg font-semibold text-[#334155] dark:text-slate-200">Designing</p>
+          </div>
+          <div class="hero-card-animate hero-card-path-2 hero-card-delay-1 flex min-h-[132px] flex-col justify-center rounded-2xl border border-[#b8ecd7] bg-gradient-to-br from-[#ecfff8] via-[#f8fff8] to-[#e3fff2] p-4 backdrop-blur-sm dark:border-[#285042] dark:from-[#0a1f19] dark:via-[#0e2720] dark:to-[#18382f]">
+            <p class="text-3xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-code-slash" aria-hidden="true"></i></p>
+            <p class="mt-2 text-lg font-semibold text-[#334155] dark:text-slate-200">Coding</p>
+          </div>
+          <div class="hero-card-animate hero-card-path-4 hero-card-delay-3 flex min-h-[132px] flex-col justify-center rounded-2xl border border-[#f6c8cb] bg-gradient-to-br from-[#fff0f1] via-[#fff7f5] to-[#ffe9e2] p-4 backdrop-blur-sm dark:border-[#4d2d32] dark:from-[#261318] dark:via-[#321920] dark:to-[#412128]">
+            <p class="text-3xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i></p>
+            <p class="mt-2 text-lg font-semibold text-[#334155] dark:text-slate-200">Launching</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Floating Hero Cards -->
+      <div data-reveal class="relative hidden h-[500px] translate-y-6 opacity-0 transition duration-700 lg:block">
+        <div class="absolute left-1/2 top-1/2 grid w-[440px] -translate-x-1/2 -translate-y-1/2 grid-cols-2 gap-10">
+          <article class="hero-card-animate relative flex min-h-[176px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#bed3ff] bg-gradient-to-br from-[#eef4ff] via-[#f8fbff] to-[#dceeff] p-5 text-center backdrop-blur-sm dark:border-[#2f3958] dark:from-[#0e1628] dark:via-[#111a2f] dark:to-[#1a2642]">
+            <div class="pointer-events-none absolute -right-4 -top-6 h-16 w-16 rounded-full bg-[#3f5dff]/25 blur-xl dark:bg-[#6f85ff]/30"></div>
+            <p class="text-4xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-layers" aria-hidden="true"></i></p>
+            <p class="mt-4 text-2xl font-display font-bold text-[#334155] dark:text-slate-300">Building</p>
+          </article>
+          <article class="hero-card-animate hero-card-path-3 hero-card-delay-2 relative flex min-h-[176px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#f4dcae] bg-gradient-to-br from-[#fff7e8] via-[#fffdf5] to-[#ffecc5] p-5 text-center backdrop-blur-sm dark:border-[#4f4328] dark:from-[#231a0e] dark:via-[#2b2114] dark:to-[#3d301b]">
+            <div class="pointer-events-none absolute -right-4 -bottom-6 h-16 w-16 rounded-full bg-[#e8ff4d]/35 blur-xl dark:bg-[#e8ff4d]/25"></div>
+            <p class="text-4xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-palette2" aria-hidden="true"></i></p>
+            <p class="mt-4 text-2xl font-display font-bold text-[#334155] dark:text-slate-300">Designing</p>
+          </article>
+          <article class="hero-card-animate hero-card-path-2 hero-card-delay-1 relative flex min-h-[176px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#b8ecd7] bg-gradient-to-br from-[#ecfff8] via-[#f7fff8] to-[#ddffef] p-5 text-center backdrop-blur-sm dark:border-[#285042] dark:from-[#0a1f19] dark:via-[#0e2720] dark:to-[#18382f]">
+            <div class="pointer-events-none absolute -left-4 -bottom-6 h-16 w-16 rounded-full bg-[#00b686]/25 blur-xl dark:bg-[#35f0bd]/30"></div>
+            <p class="text-4xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-code-slash" aria-hidden="true"></i></p>
+            <p class="mt-4 text-2xl font-display font-bold text-[#334155] dark:text-slate-300">Coding</p>
+          </article>
+          <article class="hero-card-animate hero-card-path-4 hero-card-delay-3 relative flex min-h-[176px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-[#f6c8cb] bg-gradient-to-br from-[#fff0f1] via-[#fff7f5] to-[#ffe9e2] p-5 text-center backdrop-blur-sm dark:border-[#4d2d32] dark:from-[#261318] dark:via-[#321920] dark:to-[#412128]">
+            <div class="pointer-events-none absolute -left-4 -bottom-6 h-16 w-16 rounded-full bg-[#fb7185]/30 blur-xl dark:bg-[#fb7185]/25"></div>
+            <p class="text-4xl font-bold text-[#151b2d] dark:text-[#f1f5f9]"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i></p>
+            <p class="mt-4 text-2xl font-display font-bold text-[#334155] dark:text-slate-300">Launching</p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div data-reveal class="mt-14 hidden w-full translate-y-6 justify-center opacity-0 transition duration-700 md:flex">
+      <div class="flex flex-col items-center gap-2">
+      <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#59627a] dark:text-slate-500">Scroll</p>
+      <div class="relative h-20 w-8 rounded-full">
+        <span class="absolute left-1/2 top-2 h-3 w-1 -translate-x-1/2 rounded-full bg-[#e8ff4d] animate-scroll-down"></span>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="relative overflow-hidden bg-[#f4f7fc] px-4 py-20 dark:bg-[#06090f] sm:px-6 lg:px-8">
+    <!-- Decorative Background Layers -->
+    <div class="pointer-events-none absolute inset-0 opacity-35">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(232,255,77,0.14),transparent_35%),radial-gradient(circle_at_78%_55%,rgba(59,242,197,0.1),transparent_35%),linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_100%,100%_100%,90px_90px]"></div>
+    </div>
+
+    <!-- About Two-Column Layout -->
+    <div class="relative mx-auto grid w-full max-w-6xl gap-12 xl:grid-cols-[0.9fr_1.1fr]">
+      <!-- Profile Visual Card -->
+      <div data-reveal class="translate-y-6 opacity-0 transition duration-700">
+        <div class="hover-card group relative rounded-3xl border border-[#e8ff4d]/40 p-4">
+          <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#d3dced] bg-gradient-to-br from-[#cbd5e1] via-[#94a3b8] to-[#475569] dark:border-white/5 dark:from-[#1e293b] dark:via-[#334155] dark:to-[#0f172a]">
+            <img src="images/profile%20.jpeg" alt="Dinesh profile photo" class="absolute inset-0 h-full w-full transform-gpu object-cover object-center transition duration-700 ease-out will-change-transform group-hover:scale-[1.08] group-hover:-translate-y-1" loading="lazy" />
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(232,255,77,0.22),transparent_42%),radial-gradient(circle_at_75%_80%,rgba(59,242,197,0.18),transparent_38%)]"></div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#e8ff4d]">Profile Photo</p>
+              <p class="mt-2 text-2xl font-display font-bold text-white">Dinesh</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-0.5 right-0 rounded-2xl bg-[#e8ff4d] px-6 py-3 text-right text-[#0f172a]">
+            <p class="font-display text-5xl font-bold leading-none">2024</p>
+            <p class="text-sm font-semibold">Graduate</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Copy And Details -->
+      <div>
+        <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] opacity-0 transition duration-700 dark:text-[#e8ff4d]"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>About Me</p>
+        <h2 data-reveal class="mt-4 max-w-2xl translate-y-6 font-display text-4xl font-bold leading-[0.95] tracking-[-0.03em] text-[#151b2d] opacity-0 transition duration-700 dark:text-[#f1f5f9] sm:text-5xl lg:text-6xl">
+          A developer who <span class="text-[#3f5dff] dark:text-[#e8ff4d]">loves</span> clean code
+        </h2>
+        <p data-reveal class="mt-6 max-w-3xl translate-y-6 text-lg leading-relaxed text-[#59627a] opacity-0 transition duration-700 dark:text-slate-400 sm:text-xl">
+          Hi, I'm Dinesh - a fresher web developer passionate about building clean, user-friendly websites and web apps.
+        </p>
+        <p data-reveal class="mt-4 max-w-3xl translate-y-6 text-lg leading-relaxed text-[#59627a] opacity-0 transition duration-700 dark:text-slate-400 sm:text-xl">
+          I recently completed my B.Tech in Computer Science and Engineering, and I am actively looking for entry-level opportunities to contribute, learn, and grow.
+        </p>
+
+        <!-- Personal Details Grid -->
+        <div data-reveal class="mt-9 grid max-w-3xl translate-y-6 gap-6 text-base opacity-0 transition duration-700 sm:grid-cols-2 sm:text-lg">
+          <div>
+            <p class="text-sm uppercase tracking-[0.12em] text-[#59627a] dark:text-slate-500">Name</p>
+            <p class="mt-2 font-semibold text-[#151b2d] dark:text-[#f1f5f9]">Dinesh</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.12em] text-[#59627a] dark:text-slate-500">Location</p>
+            <p class="mt-2 font-semibold text-[#151b2d] dark:text-[#f1f5f9]">Hyderabad, India</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.12em] text-[#59627a] dark:text-slate-500">Email</p>
+            <p class="mt-2 font-semibold text-[#151b2d] dark:text-[#f1f5f9]">dineshmuppidi13@gmail.com</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.12em] text-[#59627a] dark:text-slate-500">Availability</p>
+            <p class="mt-2 font-semibold text-[#00b686] dark:text-[#35f0bd]">Open to internships and entry-level roles</p>
+          </div>
+        </div>
+
+        <!-- About Page CTA -->
+        <div data-reveal class="mt-10 translate-y-6 opacity-0 transition duration-700">
+          <a href="about.html" class="inline-flex items-center rounded-full border border-[#d3dced] bg-white/70 px-8 py-4 text-base font-semibold text-[#151b2d] transition hover:border-[#e8ff4d] hover:text-[#3f5dff] dark:border-white/15 dark:bg-white/[0.02] dark:text-slate-100 dark:hover:text-[#e8ff4d] sm:text-xl">More About Me -></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-0 border-0 border-t border-white/10" />
+
+  <!-- Skills Section -->
+  <section id="skills" class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-6xl">
+      <!-- Skills Section Heading -->
+      <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>My Stack</p>
+      <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl"><span class="text-[#151b2d] dark:text-[#f0f0f0]">Skills &</span> <span class="text-[#3f5dff] dark:text-[#e8ff4d]">Technologies</span></h2>
+
+      <!-- Skills Content Layout -->
+      <div class="mt-10 grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
+        <!-- Skills Category Cards -->
+        <div class="grid gap-5 sm:grid-cols-2">
+          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">FE</span>
+              <h3 class="text-2xl font-display font-bold leading-tight">Frontend Engineering</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Responsive and accessible interfaces with reusable components and clean state flow.</p>
+            <div class="mt-5 flex flex-wrap gap-2.5">
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">React</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Next.js</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">TypeScript</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Tailwind CSS</span>
+            </div>
+          </article>
+
+          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">BE</span>
+              <h3 class="text-2xl font-display font-bold leading-tight">Backend APIs</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">REST APIs with secure auth basics, validation, and organized service structure.</p>
+            <div class="mt-5 flex flex-wrap gap-2.5">
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Node.js</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Express</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Python</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">JWT</span>
+            </div>
+          </article>
+
+          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">DB</span>
+              <h3 class="text-2xl font-display font-bold leading-tight">Data Layer</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Practical relational and NoSQL experience for small to mid-size product builds.</p>
+            <div class="mt-5 flex flex-wrap gap-2.5">
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">PostgreSQL</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">MongoDB</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Prisma</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Firebase</span>
+            </div>
+          </article>
+
+          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">OP</span>
+              <h3 class="text-2xl font-display font-bold leading-tight">Tooling & Delivery</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Version control, deployment pipelines, and performance checks for production-ready work.</p>
+            <div class="mt-5 flex flex-wrap gap-2.5">
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">GitHub</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Vercel</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">Docker</span>
+              <span class="rounded-full border border-[#c7d4ff] bg-[#eef3ff] px-3 py-1 text-xs font-medium text-[#233b9b] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">CI/CD</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Current Focus Panel -->
+        <aside data-reveal class="translate-y-6 rounded-3xl border border-[#a7d3ba] bg-gradient-to-br from-[#f4fefa] via-[#ebfff8] to-[#f4fefa] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#186a56] dark:bg-gradient-to-br dark:from-[#0e1a16] dark:via-[#0f241d] dark:to-[#101510] sm:p-7">
+          <p class="text-sm font-bold uppercase tracking-[0.1em] text-[#0f9474] dark:text-[#35f0bd]">Current Focus</p>
+          <h3 class="mt-3 font-display text-3xl font-bold leading-tight text-[#151b2d] dark:text-[#f0f0f0]">Building polished full-stack products</h3>
+          <p class="mt-3 text-base leading-relaxed text-[#4f5b74] dark:text-slate-400">I focus on shipping fast, clean, and user-friendly features with strong frontend quality.</p>
+
+          <!-- Skill Progress Bars -->
+          <div class="mt-8 space-y-5">
+            <div>
+              <div class="mb-2 flex items-center justify-between text-sm font-semibold uppercase tracking-[0.06em] text-[#4a5a6f] dark:text-slate-400"><span>React + Next.js</span><span class="text-[#1d2e46] dark:text-[#e8ff4d]">90%</span></div>
+              <div class="h-2.5 overflow-hidden rounded-full bg-[#dbe8df] dark:bg-white/10"><div data-skill-bar data-width="90%" class="h-full w-0 rounded-full bg-gradient-to-r from-[#e8ff4d] via-[#8ffb8e] to-[#3bf2c5] transition-[width] duration-1000"></div></div>
+            </div>
+            <div>
+              <div class="mb-2 flex items-center justify-between text-sm font-semibold uppercase tracking-[0.06em] text-[#4a5a6f] dark:text-slate-400"><span>JavaScript + TypeScript</span><span class="text-[#1d2e46] dark:text-[#e8ff4d]">88%</span></div>
+              <div class="h-2.5 overflow-hidden rounded-full bg-[#dbe8df] dark:bg-white/10"><div data-skill-bar data-width="88%" class="h-full w-0 rounded-full bg-gradient-to-r from-[#e8ff4d] via-[#8ffb8e] to-[#3bf2c5] transition-[width] duration-1000"></div></div>
+            </div>
+            <div>
+              <div class="mb-2 flex items-center justify-between text-sm font-semibold uppercase tracking-[0.06em] text-[#4a5a6f] dark:text-slate-400"><span>Node.js + Express</span><span class="text-[#1d2e46] dark:text-[#e8ff4d]">82%</span></div>
+              <div class="h-2.5 overflow-hidden rounded-full bg-[#dbe8df] dark:bg-white/10"><div data-skill-bar data-width="82%" class="h-full w-0 rounded-full bg-gradient-to-r from-[#e8ff4d] via-[#8ffb8e] to-[#3bf2c5] transition-[width] duration-1000"></div></div>
+            </div>
+            <div>
+              <div class="mb-2 flex items-center justify-between text-sm font-semibold uppercase tracking-[0.06em] text-[#4a5a6f] dark:text-slate-400"><span>UI Craft + Accessibility</span><span class="text-[#1d2e46] dark:text-[#e8ff4d]">85%</span></div>
+              <div class="h-2.5 overflow-hidden rounded-full bg-[#dbe8df] dark:bg-white/10"><div data-skill-bar data-width="85%" class="h-full w-0 rounded-full bg-gradient-to-r from-[#e8ff4d] via-[#8ffb8e] to-[#3bf2c5] transition-[width] duration-1000"></div></div>
+            </div>
+          </div>
+
+          <!-- Focus Tags -->
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            <span class="rounded-xl border border-[#d6e4db] bg-white/70 px-3 py-1.5 text-xs font-medium text-[#4f5b74] dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Git</span>
+            <span class="rounded-xl border border-[#d6e4db] bg-white/70 px-3 py-1.5 text-xs font-medium text-[#4f5b74] dark:border-white/10 dark:bg-white/5 dark:text-slate-400">REST APIs</span>
+            <span class="rounded-xl border border-[#d6e4db] bg-white/70 px-3 py-1.5 text-xs font-medium text-[#4f5b74] dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Responsive Design</span>
+            <span class="rounded-xl border border-[#d6e4db] bg-white/70 px-3 py-1.5 text-xs font-medium text-[#4f5b74] dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Performance</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-0 border-0 border-t border-[#d3dced] dark:border-[#222222]" />
+
+  <!-- Projects Section -->
+  <section id="projects" class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-6xl">
+      <!-- Projects Section Heading -->
+      <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Portfolio</p>
+      <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Selected Projects</h2>
+
+      <!-- Horizontal Projects Slider -->
+      <div class="projects-slider mt-12 overflow-hidden cursor-grab">
+        <!-- Slider Track -->
+        <div class="projects-grid flex w-max gap-6 will-change-transform">
+          <article data-reveal class="group w-[min(360px,calc(100vw-4rem))] translate-y-6 overflow-hidden rounded-2xl border border-[#d3dced] bg-white opacity-0 transition duration-700 hover:-translate-y-1 hover:shadow-[0_24px_55px_-30px_rgba(63,93,255,0.45)] dark:border-[#222222] dark:bg-[#111111] sm:w-[350px]">
+            <div class="relative h-56 overflow-hidden">
+              <img src="images/projects/shopflow-preview.svg" alt="ShopFlow e-commerce project preview" class="h-full w-full transform-gpu object-cover transition duration-700 ease-out group-hover:scale-110 group-hover:-translate-y-1" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+            </div>
+            <div class="flex min-h-[220px] flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Featured</p>
+              <h3 class="mt-2 text-xl font-semibold">ShopFlow E-Commerce</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Full-stack e-commerce build with cart flow, checkout, and admin dashboard.</p>
+            </div>
+          </article>
+
+          <article data-reveal class="group w-[min(360px,calc(100vw-4rem))] translate-y-6 overflow-hidden rounded-2xl border border-[#d3dced] bg-white opacity-0 transition duration-700 hover:-translate-y-1 hover:shadow-[0_24px_55px_-30px_rgba(0,182,134,0.45)] dark:border-[#222222] dark:bg-[#111111] sm:w-[350px]">
+            <div class="relative h-56 overflow-hidden">
+              <img src="images/projects/fintrack-preview.svg" alt="FinTrack dashboard project preview" class="h-full w-full transform-gpu object-cover transition duration-700 ease-out group-hover:scale-110 group-hover:-translate-y-1" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+            </div>
+            <div class="flex min-h-[220px] flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Analytics</p>
+              <h3 class="mt-2 text-xl font-semibold">FinTrack Dashboard</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Realtime dashboards with interactive data visualizations and alerts.</p>
+            </div>
+          </article>
+
+          <article data-reveal class="group w-[min(360px,calc(100vw-4rem))] translate-y-6 overflow-hidden rounded-2xl border border-[#d3dced] bg-white opacity-0 transition duration-700 hover:-translate-y-1 hover:shadow-[0_24px_55px_-30px_rgba(71,85,105,0.5)] dark:border-[#222222] dark:bg-[#111111] sm:w-[350px]">
+            <div class="relative h-56 overflow-hidden">
+              <img src="images/projects/connectspace-preview.svg" alt="ConnectSpace chat project preview" class="h-full w-full transform-gpu object-cover transition duration-700 ease-out group-hover:scale-110 group-hover:-translate-y-1" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+            </div>
+            <div class="flex min-h-[220px] flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Realtime</p>
+              <h3 class="mt-2 text-xl font-semibold">ConnectSpace Chat</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Messaging app with websocket updates, media, and auth-protected rooms.</p>
+            </div>
+          </article>
+
+          <article data-reveal class="group w-[min(360px,calc(100vw-4rem))] translate-y-6 overflow-hidden rounded-2xl border border-[#d3dced] bg-white opacity-0 transition duration-700 hover:-translate-y-1 hover:shadow-[0_24px_55px_-30px_rgba(16,185,129,0.45)] dark:border-[#222222] dark:bg-[#111111] sm:w-[350px]">
+            <div class="relative h-56 overflow-hidden">
+              <img src="images/projects/contentstudio-preview.svg" alt="Content Studio AI project preview" class="h-full w-full transform-gpu object-cover transition duration-700 ease-out group-hover:scale-110 group-hover:-translate-y-1" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div>
+            </div>
+            <div class="flex min-h-[220px] flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">AI</p>
+              <h3 class="mt-2 text-xl font-semibold">Content Studio</h3>
+              <p class="mt-2 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">AI-assisted content workflows with reusable prompts and export options.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-0 border-0 border-t border-[#d3dced] dark:border-[#222222]" />
+
+  <!-- Experience Section -->
+  <section id="experience" class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-6xl">
+      <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Journey</p>
+      <h2 data-reveal class="mt-3 max-w-3xl translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Experience & Education</h2>
+      <p data-reveal class="mt-4 max-w-3xl translate-y-6 text-base text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300 sm:text-lg">A concise view of my practical work and academic milestones.</p>
+
+      <!-- Experience And Education Columns -->
+      <div class="mt-10 grid gap-7 lg:grid-cols-2">
+        <!-- Work Experience Timeline -->
+        <section data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-white/85 p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#222222] dark:bg-[#101010] sm:p-7">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c8d5ff] bg-[#eef3ff] text-[#3f5dff] dark:border-[#4f5d1f] dark:bg-[#1a200f] dark:text-[#e8ff4d]"><i class="bi bi-briefcase-fill" aria-hidden="true"></i></span>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Career</p>
+              <h3 class="font-display text-2xl font-bold">Work Experience</h3>
+            </div>
+          </div>
+
+          <div class="relative mt-7 space-y-5 pl-8">
+            <div class="absolute bottom-4 left-[11px] top-4 w-px bg-gradient-to-b from-[#3f5dff]/60 via-[#00b686]/35 to-transparent dark:from-[#e8ff4d]/60 dark:via-[#35f0bd]/35"></div>
+            <article class="group relative rounded-2xl border border-[#d3dced] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#3f5dff]/45 dark:border-[#2a2a2a] dark:bg-[#141414] dark:hover:border-[#e8ff4d]/45">
+              <span class="absolute -left-[30px] top-6 h-4 w-4 rounded-full border-2 border-[#3f5dff] bg-white dark:border-[#e8ff4d] dark:bg-[#06090f]"></span>
+              <p class="inline-flex rounded-full bg-[#eef3ff] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#2944ba] dark:bg-[#232813] dark:text-[#e8ff4d]">2026 - Present</p>
+              <h4 class="mt-3 text-lg font-semibold">Entry-Level Frontend Developer</h4>
+              <p class="mt-1 text-sm font-medium text-[#3f5dff] dark:text-[#9eb2ff]">Personal & Freelance Projects</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Built responsive UI projects and improved frontend performance, accessibility, and maintainability.</p>
+            </article>
+
+            <article class="group relative rounded-2xl border border-[#d3dced] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#3f5dff]/45 dark:border-[#2a2a2a] dark:bg-[#141414] dark:hover:border-[#e8ff4d]/45">
+              <span class="absolute -left-[30px] top-6 h-4 w-4 rounded-full border-2 border-[#00b686] bg-white dark:border-[#35f0bd] dark:bg-[#06090f]"></span>
+              <p class="inline-flex rounded-full bg-[#ecfff8] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#0d7a5f] dark:bg-[#12231d] dark:text-[#74f7ce]">2022 - 2023</p>
+              <h4 class="mt-3 text-lg font-semibold">Academic Project Developer</h4>
+              <p class="mt-1 text-sm font-medium text-[#3f5dff] dark:text-[#9eb2ff]">College Projects & Practice</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Worked on mini projects and capstone work using HTML, CSS, JavaScript, and REST APIs.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Education Timeline -->
+        <section data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-white/85 p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#222222] dark:bg-[#101010] sm:p-7">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c8d5ff] bg-[#eef3ff] text-[#3f5dff] dark:border-[#4f5d1f] dark:bg-[#1a200f] dark:text-[#e8ff4d]"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#3f5dff] dark:text-[#e8ff4d]">Education</p>
+              <h3 class="font-display text-2xl font-bold">Academic Background</h3>
+            </div>
+          </div>
+
+          <div class="relative mt-7 space-y-5 pl-8">
+            <div class="absolute bottom-4 left-[11px] top-4 w-px bg-gradient-to-b from-[#3f5dff]/60 via-[#00b686]/35 to-transparent dark:from-[#e8ff4d]/60 dark:via-[#35f0bd]/35"></div>
+            <article class="group relative rounded-2xl border border-[#d3dced] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#3f5dff]/45 dark:border-[#2a2a2a] dark:bg-[#141414] dark:hover:border-[#e8ff4d]/45">
+              <span class="absolute -left-[30px] top-6 h-4 w-4 rounded-full border-2 border-[#3f5dff] bg-white dark:border-[#e8ff4d] dark:bg-[#06090f]"></span>
+              <p class="inline-flex rounded-full bg-[#eef3ff] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#2944ba] dark:bg-[#232813] dark:text-[#e8ff4d]">2020 - 2024</p>
+              <h4 class="mt-3 text-lg font-semibold">B.Tech - CSE</h4>
+              <p class="mt-1 text-sm font-medium text-[#3f5dff] dark:text-[#9eb2ff]">KLR College of Engineering and Technology</p>
+              <p class="mt-3 text-sm text-[#59627a] dark:text-slate-300">CGPA: 6.98 / 10</p>
+            </article>
+
+            <article class="group relative rounded-2xl border border-[#d3dced] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#3f5dff]/45 dark:border-[#2a2a2a] dark:bg-[#141414] dark:hover:border-[#e8ff4d]/45">
+              <span class="absolute -left-[30px] top-6 h-4 w-4 rounded-full border-2 border-[#00b686] bg-white dark:border-[#35f0bd] dark:bg-[#06090f]"></span>
+              <p class="inline-flex rounded-full bg-[#ecfff8] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#0d7a5f] dark:bg-[#12231d] dark:text-[#74f7ce]">2018 - 2020</p>
+              <h4 class="mt-3 text-lg font-semibold">Intermediate (MPC)</h4>
+              <p class="mt-1 text-sm font-medium text-[#3f5dff] dark:text-[#9eb2ff]">Sri Vidhya Junior College</p>
+              <p class="mt-3 text-sm text-[#59627a] dark:text-slate-300">GPA: 7.99 / 10</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-0 border-0 border-t border-[#d3dced] dark:border-[#222222]" />
+
+  <!-- Contact Section -->
+  <section id="contact" class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-6xl">
+      <!-- Contact Section Heading -->
+      <div class="mx-auto mb-12 max-w-2xl text-center">
+        <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Contact</p>
+        <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700 sm:text-5xl">Let's Build Something Together</h2>
+        <p data-reveal class="mt-4 translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">Share your idea and I'll respond within 24 hours.</p>
+      </div>
+
+      <!-- Contact Two-Panel Layout -->
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+        <!-- Contact Info Panel -->
+        <div data-reveal class="group translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 hover:-translate-y-1 hover:border-[#3f5dff]/40 dark:border-[#222222] dark:bg-[#111111] dark:hover:border-[#e8ff4d]/50">
+          <h3 class="inline-flex items-center gap-3 text-2xl font-semibold">
+            <i class="bi bi-chat-left-dots-fill text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+            Get in Touch
+          </h3>
+          <p class="mt-3 text-sm text-[#59627a] dark:text-slate-300">Open to internships, entry-level opportunities, and practical freelance collaborations.</p>
+          <div class="mt-6 space-y-3 text-sm">
+            <a href="mailto:dineshmuppidi13@gmail.com" class="flex items-center justify-between rounded-xl border border-[#d3dced] px-4 py-3 transition hover:border-[#3f5dff]/50 hover:bg-[#f7faff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d]/50 dark:hover:bg-white/[0.03]">
+              <span class="inline-flex items-center gap-2 font-semibold">
+                <i class="bi bi-envelope-at-fill text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+                Email
+              </span>
+              <span class="text-xs text-[#59627a] dark:text-slate-300 sm:text-sm">dineshmuppidi13@gmail.com</span>
+            </a>
+            <a href="tel:+919550327957" class="flex items-center justify-between rounded-xl border border-[#d3dced] px-4 py-3 transition hover:border-[#3f5dff]/50 hover:bg-[#f7faff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d]/50 dark:hover:bg-white/[0.03]">
+              <span class="inline-flex items-center gap-2 font-semibold">
+                <i class="bi bi-telephone-fill text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+                Phone
+              </span>
+              <span class="text-xs text-[#59627a] dark:text-slate-300 sm:text-sm">+91 95503 27957</span>
+            </a>
+            <div class="flex items-center justify-between rounded-xl border border-[#d3dced] px-4 py-3 dark:border-[#2a2a2a]">
+              <span class="inline-flex items-center gap-2 font-semibold">
+                <i class="bi bi-geo-alt-fill text-[#3f5dff] dark:text-[#e8ff4d]" aria-hidden="true"></i>
+                Location
+              </span>
+              <span class="text-xs text-[#59627a] dark:text-slate-300 sm:text-sm">Hyderabad, India</span>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="contact.html" class="inline-flex items-center gap-2 rounded-full border border-[#d3dced] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">
+              <i class="bi bi-send-fill" aria-hidden="true"></i>
+              Open Contact Page
+            </a>
+            <a href="mailto:dineshmuppidi13@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] text-white transition hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#151b2d] dark:hover:bg-[#d7ef3a]">
+              <i class="bi bi-envelope-paper-fill" aria-hidden="true"></i>
+              Start Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form Panel -->
+        <div data-reveal class="translate-y-6 rounded-2xl border border-[#d3dced] bg-white p-6 opacity-0 transition duration-700 dark:border-[#222222] dark:bg-[#111111]">
+          <form id="contact-form" novalidate class="space-y-4">
+            <!-- Form Success Message -->
+            <div id="form-success" class="hidden rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-600 dark:text-emerald-400">Message sent successfully. I will get back to you soon.</div>
+
+            <!-- Name And Email Row -->
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="f-name" class="mb-1 block text-sm font-medium">Full Name</label>
+                <input id="f-name" type="text" placeholder="John Doe" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+                <span id="e-name" class="mt-1 hidden text-xs text-rose-500"></span>
+              </div>
+              <div>
+                <label for="f-email" class="mb-1 block text-sm font-medium">Email Address</label>
+                <input id="f-email" type="email" placeholder="john@example.com" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+                <span id="e-email" class="mt-1 hidden text-xs text-rose-500"></span>
+              </div>
+            </div>
+
+            <!-- Quick Topic Buttons -->
+            <div>
+              <p class="mb-2 text-sm font-medium">Quick Topic</p>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" data-topic-chip="Internship opportunity" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Internship</button>
+                <button type="button" data-topic-chip="Freelance project inquiry" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Freelance Project</button>
+                <button type="button" data-topic-chip="Need a portfolio website" class="rounded-full border border-[#d3dced] px-3 py-1.5 text-xs font-semibold text-[#59627a] transition hover:border-[#3f5dff] hover:text-[#3f5dff] dark:border-[#2a2a2a] dark:text-slate-300 dark:hover:border-[#e8ff4d] dark:hover:text-[#e8ff4d]">Portfolio Website</button>
+              </div>
+            </div>
+
+            <!-- Subject Field -->
+            <div>
+              <label for="f-subject" class="mb-1 block text-sm font-medium">Subject</label>
+              <input id="f-subject" type="text" placeholder="Project inquiry" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]" />
+              <span id="e-subject" class="mt-1 hidden text-xs text-rose-500"></span>
+            </div>
+
+            <!-- Message Field -->
+            <div>
+              <div class="mb-1 flex items-center justify-between">
+                <label for="f-message" class="block text-sm font-medium">Message</label>
+                <p id="f-message-count" class="text-xs text-[#59627a] dark:text-slate-400">0/500</p>
+              </div>
+              <textarea id="f-message" maxlength="500" rows="5" placeholder="Tell me about your project goals and timeline" class="w-full rounded-xl border border-[#d3dced] bg-white px-4 py-3 text-sm placeholder:text-[#8a93a8] outline-none transition focus:border-[#3f5dff] dark:placeholder:text-slate-400 dark:focus:border-[#e8ff4d] dark:border-[#222222] dark:bg-[#0a0a0a]"></textarea>
+              <span id="e-message" class="mt-1 hidden text-xs text-rose-500"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="inline-flex items-center gap-2 rounded-full bg-[#3f5dff] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4ef8] dark:bg-[#e8ff4d] dark:text-[#151b2d] dark:hover:bg-[#d7ef3a]">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer Mount -->
+  <div id="site-footer"></div>
+  <!-- Main Script -->
+  <script src="js/main.js?v=20260428a"></script>
+</body>
+</html>
