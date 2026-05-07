@@ -324,6 +324,19 @@ const initializeUniformButtonText = () => {
   });
 };
 
+const initializeHomePageButtonEffects = () => {
+  const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if (currentPage !== 'index.html') return;
+
+  const buttonLikeElements = document.querySelectorAll('button, a.rounded-full');
+  if (!buttonLikeElements.length) return;
+
+  buttonLikeElements.forEach((element) => {
+    if (element.hasAttribute('data-no-home-button-effect')) return;
+    element.classList.add('home-page-button');
+  });
+};
+
 const initializeHoverEffects = () => {
   const cards = document.querySelectorAll('section article, section aside, section .hover-card');
   if (!cards.length) return;
@@ -691,6 +704,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initializeContactForm();
   initializeSmoothAnchors();
   initializeUniformButtonText();
+  initializeHomePageButtonEffects();
 
   window.addEventListener('hashchange', setStaticNavActiveState);
 });

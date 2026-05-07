@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <script>
     (() => {
       const root = document.documentElement;
@@ -39,177 +40,6 @@
       }
     };
   </script>
-  <!-- Page-Specific Animation Styles -->
-  <style>
-    @keyframes hero-card-float-1 {
-      0%, 100% {
-        translate: 0 0;
-        scale: 1;
-        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
-      }
-      25% {
-        translate: 8px -14px;
-        scale: 1.01;
-        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.45);
-      }
-      50% {
-        translate: -6px 10px;
-        scale: 1.02;
-        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.5);
-      }
-      75% {
-        translate: 10px -8px;
-        scale: 1.01;
-        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
-      }
-    }
-
-    @keyframes hero-card-float-2 {
-      0%, 100% {
-        translate: 0 0;
-        scale: 1;
-        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
-      }
-      25% {
-        translate: -12px -10px;
-        scale: 1.015;
-        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.4);
-      }
-      50% {
-        translate: 8px 12px;
-        scale: 1.01;
-        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.5);
-      }
-      75% {
-        translate: -10px -6px;
-        scale: 1.02;
-        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
-      }
-    }
-
-    @keyframes hero-card-float-3 {
-      0%, 100% {
-        translate: 0 0;
-        scale: 1;
-        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
-      }
-      25% {
-        translate: 10px -9px;
-        scale: 1.01;
-        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.42);
-      }
-      50% {
-        translate: -10px 9px;
-        scale: 1.02;
-        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.48);
-      }
-      75% {
-        translate: 12px -12px;
-        scale: 1.01;
-        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
-      }
-    }
-
-    @keyframes hero-card-float-4 {
-      0%, 100% {
-        translate: 0 0;
-        scale: 1;
-        box-shadow: 0 10px 22px -18px rgba(15, 23, 42, 0.45);
-      }
-      25% {
-        translate: -8px -11px;
-        scale: 1.01;
-        box-shadow: 0 22px 34px -22px rgba(63, 93, 255, 0.4);
-      }
-      50% {
-        translate: 9px 8px;
-        scale: 1.02;
-        box-shadow: 0 28px 42px -22px rgba(53, 240, 189, 0.48);
-      }
-      75% {
-        translate: -12px -10px;
-        scale: 1.01;
-        box-shadow: 0 20px 34px -20px rgba(232, 255, 77, 0.45);
-      }
-    }
-
-    @keyframes badge-pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(53, 240, 189, 0.55);
-      }
-      70% {
-        box-shadow: 0 0 0 11px rgba(53, 240, 189, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(53, 240, 189, 0);
-      }
-    }
-
-    @keyframes available-glow {
-      0%, 100% {
-        opacity: 0.9;
-        filter: drop-shadow(0 0 0 rgba(53, 240, 189, 0));
-      }
-      50% {
-        opacity: 1;
-        filter: drop-shadow(0 0 8px rgba(53, 240, 189, 0.65));
-      }
-    }
-
-    @keyframes scroll-bounce {
-      0%, 100% {
-        transform: translate(-50%, 0);
-        opacity: 1;
-      }
-      50% {
-        transform: translate(-50%, 26px);
-        opacity: 0.35;
-      }
-    }
-
-    .hero-card-animate {
-      animation: hero-card-float-1 3.5s ease-in-out infinite;
-    }
-
-    .hero-card-path-2 {
-      animation-name: hero-card-float-2;
-      animation-duration: 3.9s;
-    }
-
-    .hero-card-path-3 {
-      animation-name: hero-card-float-3;
-      animation-duration: 4.2s;
-    }
-
-    .hero-card-path-4 {
-      animation-name: hero-card-float-4;
-      animation-duration: 4.5s;
-    }
-
-    .hero-card-delay-1 {
-      animation-delay: 0.7s;
-    }
-
-    .hero-card-delay-2 {
-      animation-delay: 1.4s;
-    }
-
-    .hero-card-delay-3 {
-      animation-delay: 2.1s;
-    }
-
-    .available-dot-pulse {
-      animation: badge-pulse 2.1s ease-out infinite;
-    }
-
-    .available-text-glow {
-      animation: available-glow 2.2s ease-in-out infinite;
-    }
-
-    .animate-scroll-down {
-      animation: scroll-bounce 1.8s ease-in-out infinite;
-    }
-  </style>
 </head>
 <body class="bg-[#f4f7fc] font-body text-[#151b2d] antialiased dark:bg-[#0a0a0a] dark:text-[#f0f0f0]">
   <!-- Shared Header Mount -->
@@ -315,7 +145,7 @@
       <div class="flex flex-col items-center gap-2">
       <p class="text-xs font-semibold uppercase tracking-[0.1em] text-[#59627a] dark:text-slate-500">Scroll</p>
       <div class="relative h-20 w-8 rounded-full">
-        <span class="absolute left-1/2 top-2 h-3 w-1 -translate-x-1/2 rounded-full bg-[#e8ff4d] animate-scroll-down"></span>
+        <span class="absolute left-1/2 top-2 h-3 w-1 -translate-x-1/2 rounded-full bg-[#3f5dff] animate-scroll-down dark:bg-[#e8ff4d]"></span>
       </div>
       </div>
     </div>
@@ -341,7 +171,7 @@
               <p class="mt-2 text-2xl font-display font-bold text-white">Dinesh</p>
             </div>
           </div>
-          <div class="absolute -bottom-0.5 right-0 rounded-2xl bg-[#e8ff4d] px-6 py-3 text-right text-[#0f172a]">
+          <div class="absolute -bottom-0.5 right-0 rounded-2xl bg-[#3f5dff] px-6 py-3 text-right text-white dark:bg-[#e8ff4d] dark:text-[#0f172a]">
             <p class="font-display text-5xl font-bold leading-none">2024</p>
             <p class="text-sm font-semibold">Graduate</p>
           </div>
@@ -402,9 +232,9 @@
       <div class="mt-10 grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
         <!-- Skills Category Cards -->
         <div class="grid gap-5 sm:grid-cols-2">
-          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+          <article data-reveal class="feature-card translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
             <div class="flex items-center gap-3">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">FE</span>
+              <span class="feature-card-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">FE</span>
               <h3 class="text-2xl font-display font-bold leading-tight">Frontend Engineering</h3>
             </div>
             <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Responsive and accessible interfaces with reusable components and clean state flow.</p>
@@ -416,9 +246,9 @@
             </div>
           </article>
 
-          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+          <article data-reveal class="feature-card translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
             <div class="flex items-center gap-3">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">BE</span>
+              <span class="feature-card-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">BE</span>
               <h3 class="text-2xl font-display font-bold leading-tight">Backend APIs</h3>
             </div>
             <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">REST APIs with secure auth basics, validation, and organized service structure.</p>
@@ -430,9 +260,9 @@
             </div>
           </article>
 
-          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+          <article data-reveal class="feature-card translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
             <div class="flex items-center gap-3">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">DB</span>
+              <span class="feature-card-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">DB</span>
               <h3 class="text-2xl font-display font-bold leading-tight">Data Layer</h3>
             </div>
             <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Practical relational and NoSQL experience for small to mid-size product builds.</p>
@@ -444,9 +274,9 @@
             </div>
           </article>
 
-          <article data-reveal class="translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
+          <article data-reveal class="feature-card translate-y-6 rounded-3xl border border-[#d3dced] bg-gradient-to-br from-white via-[#f8fbff] to-[#f2f7ff] p-6 opacity-0 shadow-sm transition duration-700 dark:border-[#253126] dark:bg-gradient-to-br dark:from-[#111613] dark:via-[#0d100e] dark:to-[#1c2217]">
             <div class="flex items-center gap-3">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">OP</span>
+              <span class="feature-card-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#c7d4ff] bg-[#eef3ff] text-sm font-bold text-[#3f5dff] dark:border-[#5a6b18] dark:bg-[#1f2414] dark:text-[#e8ff4d]">OP</span>
               <h3 class="text-2xl font-display font-bold leading-tight">Tooling & Delivery</h3>
             </div>
             <p class="mt-4 text-sm leading-relaxed text-[#59627a] dark:text-slate-300">Version control, deployment pipelines, and performance checks for production-ready work.</p>
@@ -504,7 +334,7 @@
     <div class="mx-auto w-full max-w-6xl">
       <!-- Projects Section Heading -->
       <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Portfolio</p>
-      <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Selected Projects</h2>
+      <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Selected <span class="text-[#3f5dff] dark:text-[#e8ff4d]">Projects</span></h2>
 
       <!-- Horizontal Projects Slider -->
       <div class="projects-slider mt-12 overflow-hidden cursor-grab">
@@ -568,7 +398,7 @@
   <section id="experience" class="px-4 py-16 sm:px-6 lg:px-8">
     <div class="mx-auto w-full max-w-6xl">
       <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Journey</p>
-      <h2 data-reveal class="mt-3 max-w-3xl translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Experience & Education</h2>
+      <h2 data-reveal class="mt-3 max-w-3xl translate-y-6 font-display text-4xl font-bold leading-tight opacity-0 transition duration-700 sm:text-5xl">Experience & <span class="text-[#3f5dff] dark:text-[#e8ff4d]">Education</span></h2>
       <p data-reveal class="mt-4 max-w-3xl translate-y-6 text-base text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300 sm:text-lg">A concise view of my practical work and academic milestones.</p>
 
       <!-- Experience And Education Columns -->
@@ -644,7 +474,7 @@
       <!-- Contact Section Heading -->
       <div class="mx-auto mb-12 max-w-2xl text-center">
         <p data-reveal class="inline-flex translate-y-6 items-center gap-3 text-xs font-bold uppercase tracking-[0.12em] text-[#3f5dff] dark:text-[#e8ff4d] opacity-0 transition duration-700"><span class="h-px w-7 bg-[#3f5dff] dark:bg-[#e8ff4d]"></span>Contact</p>
-        <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700 sm:text-5xl">Let's Build Something Together</h2>
+        <h2 data-reveal class="mt-3 translate-y-6 font-display text-4xl font-bold opacity-0 transition duration-700 sm:text-5xl">Let's Build Something <span class="text-[#3f5dff] dark:text-[#e8ff4d]">Together</span></h2>
         <p data-reveal class="mt-4 translate-y-6 text-[#59627a] opacity-0 transition duration-700 dark:text-slate-300">Share your idea and I'll respond within 24 hours.</p>
       </div>
 
@@ -753,3 +583,4 @@
   <script src="js/main.js?v=20260428a"></script>
 </body>
 </html>
+
