@@ -212,6 +212,17 @@
       perspective: 760px;
     }
 
+    .hero-card-animate {
+      perspective: 760px;
+    }
+
+    .desktop-hero-icon {
+      display: inline-block;
+      transform-origin: center;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
     .feature-card-icon {
       display: inline-flex;
       transform-origin: center;
@@ -225,10 +236,22 @@
       animation: icon-mirror-shuffle 720ms cubic-bezier(0.23, 0.76, 0.2, 1) 1;
     }
 
+    @media (min-width: 1024px) {
+      .hero-card-animate:hover .desktop-hero-icon,
+      .hero-card-animate:focus-within .desktop-hero-icon {
+        animation: icon-mirror-shuffle 760ms cubic-bezier(0.23, 0.76, 0.2, 1) 1;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .feature-card:hover .feature-card-icon,
       .feature-card-icon:hover,
       .feature-card-icon:focus-visible {
+        animation: none;
+      }
+
+      .hero-card-animate:hover .desktop-hero-icon,
+      .hero-card-animate:focus-within .desktop-hero-icon {
         animation: none;
       }
     }

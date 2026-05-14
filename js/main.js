@@ -541,6 +541,7 @@ const initializeProjectsSlider = () => {
 const initializeContactForm = () => {
   const form = document.getElementById('contact-form');
   if (!form) return;
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzSlV19Dl67CmjrxYedDLpm4ckF3zCpBJaSoFEmlHnbY_1pgChBNyPEyutJzj_ixNU/exec';
 
   const fields = {
     name: {
@@ -637,7 +638,75 @@ const initializeContactForm = () => {
     });
   });
 
-  form.addEventListener('submit', (event) => {
+  const showSubmitStatus = (statusEl, type, message) => {
+    const isSuccess = type === 'success';
+    statusEl.textContent = message;
+    statusEl.classList.remove('hidden');
+
+    statusEl.classList.toggle('border-emerald-400/40', isSuccess);
+    statusEl.classList.toggle('bg-emerald-400/10', isSuccess);
+    statusEl.classList.toggle('text-emerald-600', isSuccess);
+    statusEl.classList.toggle('dark:text-emerald-400', isSuccess);
+
+    statusEl.classList.toggle('border-rose-400/40', !isSuccess);
+    statusEl.classList.toggle('bg-rose-400/10', !isSuccess);
+    statusEl.classList.toggle('text-rose-600', !isSuccess);
+    statusEl.classList.toggle('dark:text-rose-400', !isSuccess);
+  };
+
+  const submitViaHiddenForm = (url, data) => new Promise((resolve, reject) => {
+    try {
+      const frameId = 'contact-submit-target';
+      let iframe = document.getElementById(frameId);
+
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = frameId;
+        iframe.name = frameId;
+        iframe.className = 'hidden';
+        iframe.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(iframe);
+      }
+
+      const tempForm = document.createElement('form');
+      tempForm.method = 'POST';
+      tempForm.action = url;
+      tempForm.target = frameId;
+      tempForm.className = 'hidden';
+
+      Object.entries(data).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        tempForm.appendChild(input);
+      });
+
+      let fallbackTimer = null;
+
+      const cleanup = () => {
+        clearTimeout(fallbackTimer);
+        tempForm.remove();
+      };
+
+      fallbackTimer = setTimeout(() => {
+        cleanup();
+        resolve();
+      }, 3500);
+
+      iframe.addEventListener('load', () => {
+        cleanup();
+        resolve();
+      }, { once: true });
+
+      document.body.appendChild(tempForm);
+      tempForm.submit();
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     let valid = true;
 
@@ -657,16 +726,31 @@ const initializeContactForm = () => {
     const originalText = button.textContent;
     button.disabled = true;
     button.textContent = 'Sending...';
+    success.classList.add('hidden');
 
-    setTimeout(() => {
+    const payload = {
+      name: fields.name.el.value.trim(),
+      email: fields.email.el.value.trim(),
+      subject: fields.subject.el.value.trim(),
+      message: fields.message.el.value.trim()
+    };
+
+    try {
+      await submitViaHiddenForm(WEB_APP_URL, payload);
+
       form.reset();
       topicChips.forEach((chip) => setChipState(chip, false));
       updateMessageCount();
+      showSubmitStatus(success, 'success', 'Message sent successfully. I will get back to you soon.');
+      setTimeout(() => success.classList.add('hidden'), 4500);
+    } catch (error) {
+      console.error('Contact form submit failed:', error);
+      showSubmitStatus(success, 'error', 'Could not send message right now. Please try again.');
+      setTimeout(() => success.classList.add('hidden'), 4500);
+    } finally {
       button.disabled = false;
       button.textContent = originalText;
-      success.classList.remove('hidden');
-      setTimeout(() => success.classList.add('hidden'), 4500);
-    }, 1200);
+    }
   });
 };
 
